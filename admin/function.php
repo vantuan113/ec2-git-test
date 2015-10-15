@@ -57,7 +57,7 @@ function getDB()
     global $DB;
     if ($DB == null) {
         try {
-            $DB = new PDO('mysql:host=localhost;dbname=marutoku;charset=utf8', 'udb', 'v6sePzjN7eRmPh3f',
+            $DB = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASSWORD,
                 array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } catch (Exception $e) {
             exit ('Unable to connect: ' . $e->getMessage());
