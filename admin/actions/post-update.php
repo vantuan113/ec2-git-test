@@ -6,6 +6,13 @@
  * Time: 15:16
  */
 
+$stmt = getDB()->prepare("SELECT * FROM post WHERE id=:id");
+$stmt->execute([':id' => _post('id', 0)]);
+if ($stmt->rowCount() == 0) {
+    render('404');
+    return;
+}
+$post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (isPostRequest()) {
     $sql = 'UPDATE post SET `title`=:title,`content`=:content,`file1`=:file1,`up_file1`=:up_file1,`file2`=:file2,`up_file2`=:up_file2,';
@@ -42,6 +49,9 @@ if (isPostRequest()) {
         } else {
             $data[':file' . $i] = '';
             $data[':up_file' . $i] = '';
+            if (!empty($post['up_file' . $i])) {
+                unlink(UPLOAD_PATH . '/' . $post['up_file' . $i]);
+            }
         }
     }
 
