@@ -3,6 +3,6 @@
 <title></title>
 </head>
 <body>
-<h1><?php echo date() ?></h1>
+<h1><?php echo time();?></h1>
 </body>
 </html>
