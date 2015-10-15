@@ -1,8 +1,8 @@
 <html>
 <head>
-<title><?php echo 'Hello, Github!' ?></title>
+<title></title>
 </head>
 <body>
-<h1><?php echo 'Hello, Github!' ?></h1>
+<h1><?php echo date() ?></h1>
 </body>
 </html>
