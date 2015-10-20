@@ -6,7 +6,7 @@
  * Time: 15:16
  */
 
-$stmt = getDB()->prepare("SELECT * FROM post WHERE id=:id");
+$stmt = getDB()->prepare('SELECT * FROM "post" WHERE "id"=:id');
 $stmt->execute([':id' => _post('id', 0)]);
 if ($stmt->rowCount() == 0) {
     render('404');
@@ -15,16 +15,17 @@ if ($stmt->rowCount() == 0) {
 $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (isPostRequest()) {
-    $sql = 'UPDATE post SET `title`=:title,`content`=:content,`file1`=:file1,`up_file1`=:up_file1,`file2`=:file2,`up_file2`=:up_file2,';
-    $sql .= '`file3`=:file3,`up_file3`=:up_file3,`file4`=:file4,`up_file4`=:up_file4,`file5`=:file5,`up_file5`=:up_file5,';
-    $sql .= '`status`=:status,`modified_author`=:modified_author,`created_date`=:created_date,`updated_date`=:updated_date WHERE id=:id';
+    $sql = 'UPDATE "post" SET "title"=:title,"content"=:content,"file1"=:file1,"up_file1"=:up_file1,"file2"=:file2,"up_file2"=:up_file2,';
+    $sql .= '"file3"=:file3,"up_file3"=:up_file3,"file4"=:file4,"up_file4"=:up_file4,"file5"=:file5,"up_file5"=:up_file5,';
+    $sql .= '"status"=:status,"modified_author"=:modified_author,"created_date"=:created_date,"updated_date"=:updated_date WHERE id=:id';
     $stmt = getDB()->prepare($sql);
     $data = [
         ':title' => _post('title'),
         ':content' => _post('content'),
         ':status' => _post('status'),
         ':created_date' => _post('created_date'),
-        ':updated_date' => date('Y-m-d H:i:s'),
+//        ':updated_date' => date('Y-m-d H:i:s'), PostgreSQL doesn't have datetime data type
+        ':updated_date' => time(),
         ':modified_author' => getUserId(),
         ':id' => _post('id'),
     ];

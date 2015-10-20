@@ -115,7 +115,8 @@ $data = $G['data'];
                     <?php endfor ?>
 
                     <?php if (!empty($data['created_date'])) {
-                        $time = strtotime($data['created_date']);
+                        //$time = strtotime($data['created_date']);
+                        $time = $data['created_date'];
                         $date = [
                             'Y' => date('Y', $time),
                             'n' => date('n', $time),

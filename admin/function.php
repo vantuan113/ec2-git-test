@@ -20,7 +20,7 @@ function isLoggedIn()
 {
     global $G;
     if (isset($_SESSION['uid']) && $_SESSION['uid'] > 0) {
-        $stmt = getDB()->prepare("SELECT * FROM user WHERE id=:id LIMIT 1");
+        $stmt = getDB()->prepare('SELECT * FROM "user" WHERE "id"=:id LIMIT 1');
         $stmt->execute([':id' => $_SESSION['uid']]);
         if ($stmt->rowCount() > 0) {
             $G['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -57,7 +57,7 @@ function getDB()
     global $DB;
     if ($DB == null) {
         try {
-            $DB = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASSWORD,
+            $DB = new PDO('pgsql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD,
                 array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         } catch (Exception $e) {
             exit ('Unable to connect: ' . $e->getMessage());
@@ -85,7 +85,7 @@ function render($view, $options = [])
 
 function findUser($email)
 {
-    $stmt = getDB()->prepare('SELECT * FROM user WHERE email=:email');
+    $stmt = getDB()->prepare('SELECT * FROM "user" WHERE "email"=:email');
     $stmt->execute([':email' => $email]);
     return $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_ASSOC) : [];
 }

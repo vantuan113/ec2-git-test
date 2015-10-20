@@ -50,7 +50,7 @@ $errors = $G['errors'];
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" type="email" class="form-control" value="<?= $user['email'] ?>"
+                        <input name="email" type="text" class="form-control" value="<?= $user['email'] ?>"
                                placeholder="Email">
                     </div>
                     <!-- パスワード -->

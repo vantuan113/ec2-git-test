@@ -59,16 +59,17 @@ $totalPage = round($G['total'] / 10);
                             </td>
                             <td><i class="fa fa-paperclip"></i></td>
                             <td>
-                                <?php if ($v['status'] == 3): ?>
-                                    <span class="label label-danger">非公開</span>
-                                <?php elseif ($v['status'] == 2): ?>
-                                    <span class="label label-warning">予約</span>
+                                <?php if ($v['status'] == 2): ?>
+                                    <span class="label label-warning">非公開</span>
+                                <?php elseif ($v['status'] == 3): ?>
+                                    <span class="label label-danger">予約</span>
                                 <?php elseif ($v['status'] == 1): ?>
                                     <span class="label label-success">公開</span>
                                 <?php endif ?>
                             </td>
                             <td>
-                                <?php $time = strtotime($v['created_date']) ?>
+                                <?php //$time = strtotime($v['created_date']) ?>
+                                <?php $time = $v['created_date'] ?>
                                 <?= date('Y.m.d', $time) ?>
                             </td>
                         </tr>

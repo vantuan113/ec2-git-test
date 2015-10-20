@@ -22,7 +22,7 @@ if (isPostRequest()) {
         if (_post('confirmed') == '1') {
             $user = $G['user'];
             $password = empty($password) ? $user['password'] : hashPassword($password);
-            $stmt = getDB()->prepare('UPDATE user SET email=:email, password=:password WHERE id=:id');
+            $stmt = getDB()->prepare('UPDATE "user" SET "email"=:email, "password"=:password WHERE "id"=:id');
             $stmt->execute([':email' => $email, ':password' => $password, ':id' => $user['id']]);
             render('user-edit-thanks');
         } else {

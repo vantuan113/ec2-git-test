@@ -50,7 +50,7 @@ global $G;
 
         <form action="" method="post">
             <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="Email">
+                <input type="text" name="email" class="form-control" placeholder="Login ID">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span></div>
             <div class="form-group has-feedback">
                 <input type="password" name="password" class="form-control" placeholder="Password">

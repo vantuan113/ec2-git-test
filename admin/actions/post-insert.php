@@ -7,7 +7,7 @@
  */
 
 if (isPostRequest()) {
-    $sql = 'INSERT INTO post(`title`,`content`,`file1`,`up_file1`,`file2`,`up_file2`,`file3`,`up_file3`,`file4`,`up_file4`,`file5`,`up_file5`,`status`,`created_author`,`modified_author`,`created_date`,`updated_date`) VALUES ';
+    $sql = 'INSERT INTO "post"("title","content","file1","up_file1","file2","up_file2","file3","up_file3","file4","up_file4","file5","up_file5","status","created_author","modified_author","created_date","updated_date") VALUES ';
     $sql .= '(:title,:content,:file1,:up_file1,:file2,:up_file2,:file3,:up_file3,:file4,:up_file4,:file5,:up_file5,:status,:created_author,:modified_author,:created_date,:updated_date)';
     $stmt = getDB()->prepare($sql);
     $data = [
@@ -15,7 +15,8 @@ if (isPostRequest()) {
         ':content' => _post('content'),
         ':status' => _post('status'),
         ':created_date' => _post('created_date'),
-        ':updated_date' => date('Y-m-d H:i:s'),
+        //':updated_date' => date('Y-m-d H:i:s'), PostgreSQL don't have datetime data type like MySQL
+        ':updated_date' => time(),
         ':created_author' => getUserId(),
         ':modified_author' => getUserId(),
     ];

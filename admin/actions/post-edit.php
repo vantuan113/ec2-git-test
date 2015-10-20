@@ -6,7 +6,7 @@
  * Time: 14:12
  */
 
-$stmt = getDB()->prepare("SELECT * FROM post WHERE id=:id");
+$stmt = getDB()->prepare('SELECT * FROM "post" WHERE "id"=:id');
 $stmt->execute([':id' => _get('id', 0)]);
 if ($stmt->rowCount() == 0) {
     render('404');
@@ -46,7 +46,10 @@ if (isPostRequest()) {
         }
     }
 
-    $data['created_date'] = _post('start_year') . '-' . _post('start_month') . '-' . _post('start_day') . ' ' . _post('start_hour') . ':' . _post('start_min') . ':00';
+    //$data['created_date'] = _post('start_year') . '-' . _post('start_month') . '-' . _post('start_day') . ' ' . _post('start_hour') . ':' . _post('start_min') . ':00';
+    $s = _post('start_year') . '-' . _post('start_month') . '-' . _post('start_day') . ' ' . _post('start_hour') . ':' . _post('start_min') . ':00';
+    $date = DateTime::createFromFormat('Y-n-j G:i:s', $s);
+    $data['created_date'] = $date->getTimestamp();
 
     if (empty($G['errors'])) {
         // move file upload for check
