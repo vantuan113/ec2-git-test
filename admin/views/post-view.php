@@ -15,7 +15,7 @@ $data = $G['data'];
     </h1>
     <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
-        <li class="active"><?= htmlspecialchars($data['title']) ?></li>
+        <li class="active"><?php echo htmlspecialchars($data['title']) ?></li>
     </ol>
 </section>
 
@@ -29,11 +29,11 @@ $data = $G['data'];
                     <!-- タイトル -->
                     <div class="form-group">
 
-                        <h2 class="text-center"><?= htmlspecialchars($data['title']) ?></h2>
+                        <h2 class="text-center"><?php echo htmlspecialchars($data['title']) ?></h2>
                     </div>
                     <!-- エディタ -->
                     <div class="form-group">
-                        <?= $data['content'] ?>
+                        <?php echo $data['content'] ?>
                     </div>
 
                     <!-- ファイル　-->
@@ -46,39 +46,39 @@ $data = $G['data'];
                                     <?php if ($ext == 'pdf'): ?>
                                         <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
                                         <div class="mailbox-attachment-info">
-                                            <a href="../uploads/<?= $data['up_file' . $i] ?>"
+                                            <a href="../uploads/<?php echo $data['up_file' . $i] ?>"
                                                class="mailbox-attachment-name">
                                                 <i class="fa fa-paperclip"></i>
-                                                <?= htmlspecialchars($data['file' . $i]) ?>
+                                                <?php echo htmlspecialchars($data['file' . $i]) ?>
                                             </a>
                                             <span class="mailbox-attachment-size">
-                                                <?= human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
+                                                <?php echo human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
                                             </span>
                                         </div>
                                     <?php elseif (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])): ?>
                                         <span class="mailbox-attachment-icon has-img">
-                                            <img src="../uploads/<?= $data['up_file' . $i] ?>" alt="Attachment">
+                                            <img src="../uploads/<?php echo $data['up_file' . $i] ?>" alt="Attachment">
                                         </span>
                                         <div class="mailbox-attachment-info">
-                                            <a href="../uploads/<?= $data['up_file' . $i] ?>"
+                                            <a href="../uploads/<?php echo $data['up_file' . $i] ?>"
                                                class="mailbox-attachment-name">
                                                 <i class="fa fa-camera"></i>
-                                                <?= htmlspecialchars($data['file' . $i]) ?>
+                                                <?php echo htmlspecialchars($data['file' . $i]) ?>
                                             </a>
                                             <span class="mailbox-attachment-size">
-                                            <?= human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
+                                            <?php echo human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
                                             </span>
                                         </div>
                                     <?php else: ?>
                                         <span class="mailbox-attachment-icon"><i class="fa fa-file-o"></i></span>
                                         <div class="mailbox-attachment-info">
-                                            <a href="../uploads/<?= $data['up_file' . $i] ?>"
+                                            <a href="../uploads/<?php echo $data['up_file' . $i] ?>"
                                                class="mailbox-attachment-name">
                                                 <i class="fa fa-paperclip"></i>
-                                                <?= htmlspecialchars($data['file' . $i]) ?>
+                                                <?php echo htmlspecialchars($data['file' . $i]) ?>
                                             </a>
                                             <span class="mailbox-attachment-size">
-                                                <?= human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
+                                                <?php echo human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
                                             </span>
                                         </div>
                                     <?php endif ?>
@@ -95,7 +95,7 @@ $data = $G['data'];
                         <label>公開日</label>
 
                         <p class="form-control-static">
-                            <?= date('Y', $time) ?>年<?= date('m', $time) ?>月<?= date('d', $time) ?>日
+                            <?php echo date('Y', $time) ?>年<?php echo date('m', $time) ?>月<?php echo date('d', $time) ?>日
                         </p>
                         <!-- /.input group -->
                     </div>
@@ -105,13 +105,13 @@ $data = $G['data'];
                         <label>ステータス</label>
 
                         <p class="form-control-static">
-                            <?= postStatus($data['status']) ?>
+                            <?php echo postStatus($data['status']) ?>
                         </p>
                     </div>
                     <div class="box-footer">
                         <div class="col-md-6 col-xs-offset-3">
                             <a class="btn btn-block btn-danger"
-                               href="index.php?a=post-edit&id=<?= $data['id'] ?>">編集する</a>
+                               href="index.php?a=post-edit&id=<?php echo $data['id'] ?>">編集する</a>
                             <!-- <button class="btn btn-block btn-success">登録する</button> -->
                         </div>
                     </div>

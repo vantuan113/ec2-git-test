@@ -15,7 +15,7 @@ $data = $G['data'];
     </h1>
     <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
-        <li><a href="index.php?a=post-vew&id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></li>
+        <li><a href="index.php?a=post-vew&id=<?php echo $data['id'] ?>"><?php echo htmlspecialchars($data['title']) ?></a></li>
         <li class="active">編集</li>
     </ol>
 </section>
@@ -33,7 +33,7 @@ $data = $G['data'];
                     <div class="alert alert-danger alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <?php foreach ($G['errors'] as $error): ?>
-                            <p><i class="icon fa fa-ban"></i> <strong><?= $error ?></strong></p>
+                            <p><i class="icon fa fa-ban"></i> <strong><?php echo $error ?></strong></p>
                         <?php endforeach ?>
                     </div>
                 <?php endif ?>
@@ -43,17 +43,17 @@ $data = $G['data'];
                     <!-- タイトル -->
                     <div class="form-group">
                         <label>タイトル</label>
-                        <input name="title" type="text" class="form-control" value="<?= $data['title'] ?>">
+                        <input name="title" type="text" class="form-control" value="<?php echo $data['title'] ?>">
                     </div>
                     <!-- エディタ -->
                     <div class="form-group">
-                        <textarea id="editor1" name="content" rows="10" cols="80"><?= $data['content'] ?></textarea>
+                        <textarea id="editor1" name="content" rows="10" cols="80"><?php echo $data['content'] ?></textarea>
                     </div>
 
                     <?php for ($i = 1; $i <= 5; $i++): ?>
                         <!-- ファイル　-->
                         <div class="form-group">
-                            <label for="inputfile">添付ファイル <?= $i ?></label>
+                            <label for="inputfile">添付ファイル <?php echo $i ?></label>
                             <?php if (!empty($data['file' . $i]) && !empty($data['up_file' . $i])): ?>
                                 <ul class="mailbox-attachments clearfix">
                                     <li>
@@ -62,39 +62,39 @@ $data = $G['data'];
                                             <span class="mailbox-attachment-icon"><i
                                                     class="fa fa-file-pdf-o"></i></span>
                                             <div class="mailbox-attachment-info">
-                                                <a href="../uploads/<?= $data['up_file' . $i] ?>"
+                                                <a href="../uploads/<?php echo $data['up_file' . $i] ?>"
                                                    class="mailbox-attachment-name">
                                                     <i class="fa fa-paperclip"></i>
-                                                    <?= htmlspecialchars($data['file' . $i]) ?>
+                                                    <?php echo htmlspecialchars($data['file' . $i]) ?>
                                                 </a>
                                             <span class="mailbox-attachment-size">
-                                                <?= human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
+                                                <?php echo human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
                                             </span>
                                             </div>
                                         <?php elseif (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])): ?>
                                             <span class="mailbox-attachment-icon has-img">
-                                            <img src="../uploads/<?= $data['up_file' . $i] ?>" alt="Attachment">
+                                            <img src="../uploads/<?php echo $data['up_file' . $i] ?>" alt="Attachment">
                                         </span>
                                             <div class="mailbox-attachment-info">
-                                                <a href="../uploads/<?= $data['up_file' . $i] ?>"
+                                                <a href="../uploads/<?php echo $data['up_file' . $i] ?>"
                                                    class="mailbox-attachment-name">
                                                     <i class="fa fa-camera"></i>
-                                                    <?= htmlspecialchars($data['file' . $i]) ?>
+                                                    <?php echo htmlspecialchars($data['file' . $i]) ?>
                                                 </a>
                                             <span class="mailbox-attachment-size">
-                                            <?= human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
+                                            <?php echo human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
                                             </span>
                                             </div>
                                         <?php else: ?>
                                             <span class="mailbox-attachment-icon"><i class="fa fa-file-o"></i></span>
                                             <div class="mailbox-attachment-info">
-                                                <a href="../uploads/<?= $data['up_file' . $i] ?>"
+                                                <a href="../uploads/<?php echo $data['up_file' . $i] ?>"
                                                    class="mailbox-attachment-name">
                                                     <i class="fa fa-paperclip"></i>
-                                                    <?= htmlspecialchars($data['file' . $i]) ?>
+                                                    <?php echo htmlspecialchars($data['file' . $i]) ?>
                                                 </a>
                                             <span class="mailbox-attachment-size">
-                                                <?= human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
+                                                <?php echo human_filesize(UPLOAD_PATH . '/' . $data['up_file' . $i]) ?>
                                             </span>
                                             </div>
                                         <?php endif ?>
@@ -102,12 +102,12 @@ $data = $G['data'];
                                 </ul>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="delete_file<?= $i ?>" value="1">
+                                        <input type="checkbox" name="delete_file<?php echo $i ?>" value="1">
                                         削除する
                                     </label>
                                 </div>
                             <?php else: ?>
-                                <input name="file<?= $i ?>" type="file" id="inputfile">
+                                <input name="file<?php echo $i ?>" type="file" id="inputfile">
 
                                 <p class="help-block">ファイル形式 JPG/GIR/PNG/PDF ....バイトまで </p>
                             <?php endif ?>
@@ -143,7 +143,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php $y = (int)date('Y') ?>
                                     <?php for ($i = 0; $i < 4; $i++): ?>
-                                        <option value="<?= $y ?>" <?= $y == $date['Y'] ? 'selected' : '' ?>><?= $y ?></option>
+                                        <option value="<?php echo $y ?>" <?php echo $y == $date['Y'] ? 'selected' : '' ?>><?php echo $y ?></option>
                                         <?php $y++; endfor ?>
                                 </select>
                                 年
@@ -151,7 +151,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php for ($i = 1; $i <= 12; $i++): ?>
                                         <option
-                                            value="<?= $i ?>" <?= $i == $date['n'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            value="<?php echo $i ?>" <?php echo $i == $date['n'] ? 'selected' : '' ?>><?php echo $i ?></option>
                                     <?php endfor ?>
                                 </select>
                                 月
@@ -159,7 +159,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php for ($i = 1; $i <= 31; $i++): ?>
                                         <option
-                                            value="<?= $i ?>" <?= $i == $date['j'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            value="<?php echo $i ?>" <?php echo $i == $date['j'] ? 'selected' : '' ?>><?php echo $i ?></option>
                                     <?php endfor ?>
                                 </select>
                                 日
@@ -167,7 +167,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php for ($i = 0; $i <= 23; $i++): ?>
                                         <option
-                                            value="<?= $i ?>" <?= $i == $date['G'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            value="<?php echo $i ?>" <?php echo $i == $date['G'] ? 'selected' : '' ?>><?php echo $i ?></option>
                                     <?php endfor ?>
                                 </select>
                                 時
@@ -175,7 +175,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php for ($i = 0; $i <= 50; $i += 10): ?>
                                         <option
-                                            value="<?= $i ?>" <?= $i == $date['i'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            value="<?php echo $i ?>" <?php echo $i == $date['i'] ? 'selected' : '' ?>><?php echo $i ?></option>
                                     <?php endfor ?>
                                 </select>
                                 分 <br>
@@ -191,7 +191,7 @@ $data = $G['data'];
                         <select name="status" class="form-control">
                             <?php foreach (postStatus() as $k => $v): ?>
                                 <option
-                                    value="<?= $k ?>" <?= $k == $data['status'] ? 'selected' : '' ?>><?= $v ?></option>
+                                    value="<?php echo $k ?>" <?php echo $k == $data['status'] ? 'selected' : '' ?>><?php echo $v ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>

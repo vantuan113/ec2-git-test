@@ -30,7 +30,7 @@
                         <th>ユーザーID</th>
                     </tr>
                     <tr>
-                        <td><a href="index.php?a=user-edit&id=<?= getUserId() ?>">ユーザー名がここに入る</a></td>
+                        <td><a href="index.php?a=user-edit&id=<?php echo getUserId() ?>">ユーザー名がここに入る</a></td>
                     </tr>
                     </tbody>
                 </table>

@@ -16,7 +16,7 @@ $data = $G['data'];
     <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
         <li><a href="index.php?a=user">ユーザー</a></li>
-        <li><a href="index.php?a=user-edit&id=<?= getUserId() ?>">編集</a></li>
+        <li><a href="index.php?a=user-edit&id=<?php echo getUserId() ?>">編集</a></li>
         <li class="active">確認</li>
     </ol>
 </section>
@@ -35,14 +35,14 @@ $data = $G['data'];
                     <div class="form-group">
                         <label>ユーザーID</label>
 
-                        <p class="form-control-static"><?= getUserId() ?></p>
+                        <p class="form-control-static"><?php echo getUserId() ?></p>
                     </div>
                     <!-- Email -->
                     <div class="form-group">
                         <label>Email login</label>
 
-                        <p class="form-control-static"><?= $data['email'] ?></p>
-                        <input name="email" type="hidden" value="<?= $data['email'] ?>">
+                        <p class="form-control-static"><?php echo $data['email'] ?></p>
+                        <input name="email" type="hidden" value="<?php echo $data['email'] ?>">
                     </div>
                     <!-- パスワード -->
                     <div class="form-group">
@@ -50,13 +50,13 @@ $data = $G['data'];
 
                         <!--                        <p>パスワード表示</p>-->
                         <p class="form-control-static"><?php // echo $data['password'] ?>******</p>
-                        <input name="password" type="hidden" value="<?= $data['password'] ?>">
-                        <input name="password-confirm" type="hidden" value="<?= $data['password'] ?>">
+                        <input name="password" type="hidden" value="<?php echo $data['password'] ?>">
+                        <input name="password-confirm" type="hidden" value="<?php echo $data['password'] ?>">
                     </div>
                     <div class="box-footer text-center">
                         <div class="col-md-6">
                             <a class="btn btn-block btn-default"
-                               href="index.php?a=user-edit&id=<?= getUserId() ?>">戻る</a>
+                               href="index.php?a=user-edit&id=<?php echo getUserId() ?>">戻る</a>
                             <!-- <button class="btn btn-block btn-default">戻る</button> -->
                         </div>
                         <div class="col-md-6">

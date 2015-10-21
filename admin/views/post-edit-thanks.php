@@ -15,8 +15,8 @@ $data = $G['data'];
     </h1>
     <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
-        <li><a href="index.php?a=post-view&id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></li>
-        <li><a href="index.php?a=post-edit&id=<?= $data['id'] ?>">編集</a></li>
+        <li><a href="index.php?a=post-view&id=<?php echo $data['id'] ?>"><?php echo htmlspecialchars($data['title']) ?></a></li>
+        <li><a href="index.php?a=post-edit&id=<?php echo $data['id'] ?>">編集</a></li>
         <li><a href="#">確認</a></li>
         <li class="active">完了</li>
     </ol>

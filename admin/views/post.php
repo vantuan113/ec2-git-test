@@ -32,7 +32,7 @@ $data = $G['data'];
                     <div class="alert alert-danger alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <?php foreach ($G['errors'] as $error): ?>
-                            <p><i class="icon fa fa-ban"></i> <strong><?= $error ?></strong></p>
+                            <p><i class="icon fa fa-ban"></i> <strong><?php echo $error ?></strong></p>
                         <?php endforeach ?>
                     </div>
                 <?php endif ?>
@@ -42,19 +42,19 @@ $data = $G['data'];
                     <!-- タイトル -->
                     <div class="form-group">
                         <label>タイトル</label>
-                        <input name="title" value="<?= $data['title'] ?>" type="text" class="form-control"
+                        <input name="title" value="<?php echo $data['title'] ?>" type="text" class="form-control"
                                placeholder="タイトルを入力してください...">
                     </div>
                     <!-- エディタ -->
                     <div class="form-group">
-                        <textarea id="editor1" name="content" rows="10" cols="80"><?= $data['content'] ?></textarea>
+                        <textarea id="editor1" name="content" rows="10" cols="80"><?php echo $data['content'] ?></textarea>
                     </div>
 
                     <?php for ($i = 1; $i <= 5; $i++): ?>
                         <!-- ファイル　-->
                         <div class="form-group">
-                            <label for="inputfile">添付ファイル <?= $i ?></label>
-                            <input name="file<?= $i ?>" type="file" id="inputfile">
+                            <label for="inputfile">添付ファイル <?php echo $i ?></label>
+                            <input name="file<?php echo $i ?>" type="file" id="inputfile">
 
                             <p class="help-block">ファイル形式 JPG/GIR/PNG/PDF ....バイトまで </p>
                         </div>
@@ -88,7 +88,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php $y = (int)date('Y') ?>
                                     <?php for ($i = 0; $i < 4; $i++): ?>
-                                        <option value="<?= $y ?>" <?= $y == $date['Y'] ? 'selected' : '' ?>><?= $y ?></option>
+                                        <option value="<?php echo $y ?>" <?php echo $y == $date['Y'] ? 'selected' : '' ?>><?php echo $y ?></option>
                                         <?php $y++; endfor ?>
                                 </select>
                                 年
@@ -96,7 +96,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php for ($i = 1; $i <= 12; $i++): ?>
                                         <option
-                                            value="<?= $i ?>" <?= $i == $date['n'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            value="<?php echo $i ?>" <?php echo $i == $date['n'] ? 'selected' : '' ?>><?php echo $i ?></option>
                                     <?php endfor ?>
                                 </select>
                                 月
@@ -104,7 +104,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php for ($i = 1; $i <= 31; $i++): ?>
                                         <option
-                                            value="<?= $i ?>" <?= $i == $date['j'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            value="<?php echo $i ?>" <?php echo $i == $date['j'] ? 'selected' : '' ?>><?php echo $i ?></option>
                                     <?php endfor ?>
                                 </select>
                                 日
@@ -112,7 +112,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php for ($i = 0; $i <= 23; $i++): ?>
                                         <option
-                                            value="<?= $i ?>" <?= $i == $date['G'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            value="<?php echo $i ?>" <?php echo $i == $date['G'] ? 'selected' : '' ?>><?php echo $i ?></option>
                                     <?php endfor ?>
                                 </select>
                                 時
@@ -120,7 +120,7 @@ $data = $G['data'];
                                     <option value="">選択</option>
                                     <?php for ($i = 0; $i <= 50; $i += 10): ?>
                                         <option
-                                            value="<?= $i ?>" <?= $i == $date['i'] ? 'selected' : '' ?>><?= $i ?></option>
+                                            value="<?php echo $i ?>" <?php echo $i == $date['i'] ? 'selected' : '' ?>><?php echo $i ?></option>
                                     <?php endfor ?>
                                 </select>
                                 分 <br>
@@ -135,7 +135,7 @@ $data = $G['data'];
                         <label>ステータス</label>
                         <select name="status" class="form-control">
                             <?php foreach (postStatus() as $k => $v): ?>
-                                <option value="<?= $k ?>"><?= $v ?></option>
+                                <option value="<?php echo $k ?>"><?php echo $v ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>

@@ -15,8 +15,8 @@ $data = $G['data'];
     </h1>
     <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> ダッシュボード</a></li>
-        <li><a href="index.php?a=post-view&id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></li>
-        <li><a href="index.php?a=post-edit&id=<?= $data['id'] ?>">編集</a></li>
+        <li><a href="index.php?a=post-view&id=<?php echo $data['id'] ?>"><?php echo htmlspecialchars($data['title']) ?></a></li>
+        <li><a href="index.php?a=post-edit&id=<?php echo $data['id'] ?>">編集</a></li>
         <li class="active">確認</li>
     </ol>
 </section>
@@ -29,17 +29,17 @@ $data = $G['data'];
 
             <div class="box-body">
                 <form role="form" method="post" action="index.php?a=post-update">
-                    <input name="id" type="hidden" value="<?= $data['id'] ?>">
+                    <input name="id" type="hidden" value="<?php echo $data['id'] ?>">
                     <!-- タイトル -->
                     <div class="form-group">
                         <!--                        <h2 class="text-center">eco-bill 臨時メンテナンス作業実施のお知らせ </h2>-->
-                        <h2 class="text-center"><?= htmlspecialchars($data['title']) ?></h2>
-                        <input type="hidden" name="title" value="<?= $data['title'] ?>"/>
+                        <h2 class="text-center"><?php echo htmlspecialchars($data['title']) ?></h2>
+                        <input type="hidden" name="title" value="<?php echo $data['title'] ?>"/>
                     </div>
                     <!-- エディタ -->
                     <div class="form-group">
-                        <?= $data['content'] ?>
-                        <textarea name="content" class="hidden"><?= $data['content'] ?></textarea>
+                        <?php echo $data['content'] ?>
+                        <textarea name="content" class="hidden"><?php echo $data['content'] ?></textarea>
                     </div>
 
                     <!-- ファイル　-->
@@ -51,42 +51,42 @@ $data = $G['data'];
                                 <?php $fLink = '../uploads/' . (strpos($f['path'], '/') > 0 ? '' : 'tmp/') . $f['path']; ?>
                                 <?php $fPath = UPLOAD_PATH. '/' . (strpos($f['path'], '/') > 0 ? '' : 'tmp/') . $f['path']; ?>
                                 <li>
-                                    <input type="hidden" name="file<?= $i ?>" value="<?= $f['name'] ?>">
-                                    <input type="hidden" name="up_file<?= $i ?>" value="<?= $f['path'] ?>">
+                                    <input type="hidden" name="file<?php echo $i ?>" value="<?php echo $f['name'] ?>">
+                                    <input type="hidden" name="up_file<?php echo $i ?>" value="<?php echo $f['path'] ?>">
                                     <?php $ext = pathinfo($f['name'], PATHINFO_EXTENSION); ?>
                                     <?php if ($ext == 'pdf'): ?>
                                         <span class="mailbox-attachment-icon"><i class="fa fa-file-pdf-o"></i></span>
                                         <div class="mailbox-attachment-info">
-                                            <a href="<?= $fLink ?>" class="mailbox-attachment-name">
+                                            <a href="<?php echo $fLink ?>" class="mailbox-attachment-name">
                                                 <i class="fa fa-paperclip"></i>
-                                                <?= htmlspecialchars($f['name']) ?>
+                                                <?php echo htmlspecialchars($f['name']) ?>
                                             </a>
                                             <span class="mailbox-attachment-size">
-                                                <?= human_filesize($fPath) ?>
+                                                <?php echo human_filesize($fPath) ?>
                                             </span>
                                         </div>
                                     <?php elseif (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])): ?>
                                         <span class="mailbox-attachment-icon has-img">
-                                            <img src="<?= $fLink ?>" alt="Attachment">
+                                            <img src="<?php echo $fLink ?>" alt="Attachment">
                                         </span>
                                         <div class="mailbox-attachment-info">
-                                            <a href="<?= $fLink ?>" class="mailbox-attachment-name">
+                                            <a href="<?php echo $fLink ?>" class="mailbox-attachment-name">
                                                 <i class="fa fa-camera"></i>
-                                                <?= htmlspecialchars($f['name']) ?>
+                                                <?php echo htmlspecialchars($f['name']) ?>
                                             </a>
                                             <span class="mailbox-attachment-size">
-                                            <?= human_filesize($fPath) ?>
+                                            <?php echo human_filesize($fPath) ?>
                                             </span>
                                         </div>
                                     <?php else: ?>
                                         <span class="mailbox-attachment-icon"><i class="fa fa-file-o"></i></span>
                                         <div class="mailbox-attachment-info">
-                                            <a href="<?= $fLink ?>" class="mailbox-attachment-name">
+                                            <a href="<?php echo $fLink ?>" class="mailbox-attachment-name">
                                                 <i class="fa fa-paperclip"></i>
-                                                <?= htmlspecialchars($f['name']) ?>
+                                                <?php echo htmlspecialchars($f['name']) ?>
                                             </a>
                                             <span class="mailbox-attachment-size">
-                                                <?= human_filesize($fPath) ?>
+                                                <?php echo human_filesize($fPath) ?>
                                             </span>
                                         </div>
                                     <?php endif ?>
@@ -103,9 +103,9 @@ $data = $G['data'];
                         <label>公開日</label>
 
                         <p class="form-control-static">
-                            <?= date('Y', $time) ?>年<?= date('m', $time) ?>月<?= date('d', $time) ?>日
+                            <?php echo date('Y', $time) ?>年<?php echo date('m', $time) ?>月<?php echo date('d', $time) ?>日
                         </p>
-                        <input name="created_date" type="hidden" value="<?= $data['created_date'] ?>">
+                        <input name="created_date" type="hidden" value="<?php echo $data['created_date'] ?>">
                         <!-- /.input group -->
                     </div>
                     <!-- /.form group -->
@@ -114,10 +114,10 @@ $data = $G['data'];
                         <label>ステータス</label>
 
                         <p class="form-control-static">
-                            <?= postStatus($data['status']) ?>
+                            <?php echo postStatus($data['status']) ?>
                         </p>
                         <!--                        <p>公開</p>-->
-                        <input name="status" type="hidden" value="<?= $data['status'] ?>">
+                        <input name="status" type="hidden" value="<?php echo $data['status'] ?>">
                     </div>
                     <div class="box-footer text-center">
                         <div class="col-md-6">

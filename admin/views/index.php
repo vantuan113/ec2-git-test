@@ -31,9 +31,9 @@ $totalPage = round($G['total'] / 10);
                     <ul class="pagination pagination-sm no-margin pull-right">
                         <li><a href="index.php?a=index&page=1">«</a></li>
                         <?php for ($i = 1; $i <= $totalPage; $i++): ?>
-                            <li><a href="index.php?a=index&page=<?= $i ?>"><?= $i ?></a></li>
+                            <li><a href="index.php?a=index&page=<?php echo $i ?>"><?php echo $i ?></a></li>
                         <?php endfor ?>
-                        <li><a href="index.php?a=index&page=<?= $totalPage ?>">»</a></li>
+                        <li><a href="index.php?a=index&page=<?php echo $totalPage ?>">»</a></li>
                     </ul>
                 </div>
             </div>
@@ -51,10 +51,10 @@ $totalPage = round($G['total'] / 10);
                     </tr>
                     <?php foreach ($data as $v): ?>
                         <tr>
-                            <td><?= $v['id'] ?>.</td>
+                            <td><?php echo $v['id'] ?>.</td>
                             <td>
-                                <a href="index.php?a=post-view&id=<?= $v['id'] ?>">
-                                    <?= htmlspecialchars($v['title']) ?>
+                                <a href="index.php?a=post-view&id=<?php echo $v['id'] ?>">
+                                    <?php echo htmlspecialchars($v['title']) ?>
                                 </a>
                             </td>
                             <td><i class="fa fa-paperclip"></i></td>
@@ -70,7 +70,7 @@ $totalPage = round($G['total'] / 10);
                             <td>
                                 <?php //$time = strtotime($v['created_date']) ?>
                                 <?php $time = $v['created_date'] ?>
-                                <?= date('Y.m.d', $time) ?>
+                                <?php echo date('Y.m.d', $time) ?>
                             </td>
                         </tr>
                     <?php endforeach ?>
@@ -81,9 +81,9 @@ $totalPage = round($G['total'] / 10);
                         <ul class="pagination pagination-sm no-margin pull-right">
                             <li><a href="index.php?a=index&page=1">«</a></li>
                             <?php for ($i = 1; $i <= $totalPage; $i++): ?>
-                                <li><a href="index.php?a=index&page=<?= $i ?>"><?= $i ?></a></li>
+                                <li><a href="index.php?a=index&page=<?php echo $i ?>"><?php echo $i ?></a></li>
                             <?php endfor ?>
-                            <li><a href="index.php?a=index&page=<?= $totalPage ?>">»</a></li>
+                            <li><a href="index.php?a=index&page=<?php echo $totalPage ?>">»</a></li>
                         </ul>
                     </div>
                 </div>

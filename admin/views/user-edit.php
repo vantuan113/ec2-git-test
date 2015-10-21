@@ -35,7 +35,7 @@ $errors = $G['errors'];
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <?php foreach ($errors as $error): ?>
-                        <p><i class="icon fa fa-ban"></i> <strong><?= htmlspecialchars($error) ?></strong></p>
+                        <p><i class="icon fa fa-ban"></i> <strong><?php echo htmlspecialchars($error) ?></strong></p>
                         <?php endforeach ?>
 <!--                    <p><i class="icon fa fa-ban"></i> <strong>２つのパスワードがあってません</strong></p>-->
 
@@ -46,11 +46,11 @@ $errors = $G['errors'];
                     <div class="form-group">
                         <label>ユーザーID</label>
                         <!--                    <input type="text" class="form-control" value="ユーザー名">-->
-                        <p class="form-control-static"><?= getUserId() ?></p>
+                        <p class="form-control-static"><?php echo getUserId() ?></p>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" type="text" class="form-control" value="<?= $user['email'] ?>"
+                        <input name="email" type="text" class="form-control" value="<?php echo $user['email'] ?>"
                                placeholder="Email">
                     </div>
                     <!-- パスワード -->
