@@ -6,19 +6,19 @@
  * Time: 9:45
  */
 
-$data = [
+$data = array(
     'title' => '',
     'content' => '',
     'status' => null,
     'created_date' => null,
-];
+);
 
 if (isPostRequest()) {
-    $data = [
+    $data = array(
         'title' => _post('title'),
         'content' => _post('content'),
         'status' => _post('status'),
-    ];
+    );
 
     if (empty($data['title'])) {
         $G['errors']['title'] = 'タイトルが入力されていません';
@@ -35,7 +35,7 @@ if (isPostRequest()) {
                 $G['errors']['file' . $i] = '添付ファイル ' . $i . 'の内容をご確認下さい';
             }
             if (empty($G['errors']['file' . $i])) {
-                $data['file' . $i] = ['name' => $f['name'], 'tmp_name' => $f['tmp_name']];
+                $data['file' . $i] = array('name' => $f['name'], 'tmp_name' => $f['tmp_name']);
             }
         }
     }

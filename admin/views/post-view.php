@@ -89,7 +89,8 @@ $data = $G['data'];
 
 
                     <!-- 公開日 -->
-                    <?php $time = strtotime($data['created_date']) ?>
+                    <?php //$time = strtotime($data['created_date']) ?>
+                    <?php $time = $data['created_date'] ?>
                     <div class="form-group">
                         <label>公開日</label>
 

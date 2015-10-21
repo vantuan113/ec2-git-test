@@ -7,7 +7,7 @@
  */
 
 $stmt = getDB()->prepare('SELECT * FROM "post" WHERE "id"=:id');
-$stmt->execute([':id' => _post('id', 0)]);
+$stmt->execute(array(':id' => _post('id', 0)));
 if ($stmt->rowCount() == 0) {
     render('404');
     return;
@@ -19,7 +19,7 @@ if (isPostRequest()) {
     $sql .= '"file3"=:file3,"up_file3"=:up_file3,"file4"=:file4,"up_file4"=:up_file4,"file5"=:file5,"up_file5"=:up_file5,';
     $sql .= '"status"=:status,"modified_author"=:modified_author,"created_date"=:created_date,"updated_date"=:updated_date WHERE id=:id';
     $stmt = getDB()->prepare($sql);
-    $data = [
+    $data = array(
         ':title' => _post('title'),
         ':content' => _post('content'),
         ':status' => _post('status'),
@@ -28,7 +28,7 @@ if (isPostRequest()) {
         ':updated_date' => time(),
         ':modified_author' => getUserId(),
         ':id' => _post('id'),
-    ];
+    );
 
 
     $path = getUploadPath();
@@ -57,10 +57,10 @@ if (isPostRequest()) {
     }
 
     $stmt->execute($data);
-    $G['data'] = [
+    $G['data'] = array(
         'id' => $data[':id'],
         'title' => $data[':title'],
-    ];
+    );
 
     render('post-edit-thanks');
 

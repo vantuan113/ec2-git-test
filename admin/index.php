@@ -16,7 +16,7 @@ error_reporting(-1);
 @session_start();
 
 $DB = null;
-$G = ['errors' => []];
+$G = array('errors' => array());
 
 include '../config.php';
 include 'function.php';

@@ -62,21 +62,21 @@ $data = $G['data'];
 
                     <?php if (!empty($data['created_date'])) {
                         $time = strtotime($data['created_date']);
-                        $date = [
+                        $date = array(
                             'Y' => date('Y', $time),
                             'n' => date('n', $time),
                             'j' => date('j', $time),
                             'G' => date('G', $time),
                             'i' => date('i', $time),
-                        ];
+                        );
                     } else {
-                        $date = [
+                        $date = array(
                             'Y' => -1,
                             'n' => -1,
                             'j' => -1,
                             'G' => -1,
                             'i' => -1,
-                        ];
+                        );
                     } ?>
                     <!-- 公開日 -->
                     <div class="form-group">

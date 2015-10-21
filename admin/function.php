@@ -66,7 +66,7 @@ function getDB()
     return $DB;
 }
 
-function render($view, $options = [])
+function render($view, $options = array())
 {
     $defaultOptions = ['header' => true, 'footer' => true];
     $options = array_merge($defaultOptions, $options);
@@ -87,7 +87,7 @@ function findUser($email)
 {
     $stmt = getDB()->prepare('SELECT * FROM "user" WHERE "email"=:email');
     $stmt->execute([':email' => $email]);
-    return $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_ASSOC) : [];
+    return $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_ASSOC) : array();
 }
 
 function hashPassword($password)

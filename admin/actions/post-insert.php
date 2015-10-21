@@ -10,7 +10,7 @@ if (isPostRequest()) {
     $sql = 'INSERT INTO "post"("title","content","file1","up_file1","file2","up_file2","file3","up_file3","file4","up_file4","file5","up_file5","status","created_author","modified_author","created_date","updated_date") VALUES ';
     $sql .= '(:title,:content,:file1,:up_file1,:file2,:up_file2,:file3,:up_file3,:file4,:up_file4,:file5,:up_file5,:status,:created_author,:modified_author,:created_date,:updated_date)';
     $stmt = getDB()->prepare($sql);
-    $data = [
+    $data = array(
         ':title' => _post('title'),
         ':content' => _post('content'),
         ':status' => _post('status'),
@@ -19,7 +19,7 @@ if (isPostRequest()) {
         ':updated_date' => time(),
         ':created_author' => getUserId(),
         ':modified_author' => getUserId(),
-    ];
+    );
 
     $path = getUploadPath();
     for ($i = 1; $i <= 5; $i++) {
@@ -39,10 +39,10 @@ if (isPostRequest()) {
     }
 
     $stmt->execute($data);
-    $G['data'] = [
+    $G['data'] = array(
         'id' => getDB()->lastInsertId(),
         'title' => $data[':title'],
-    ];
+    );
     render('post-thanks');
 
     deleteTmpFiles();

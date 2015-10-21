@@ -7,7 +7,7 @@
  */
 
 $stmt = getDB()->prepare('SELECT * FROM "post" WHERE "id"=:id');
-$stmt->execute([':id' => _get('id', 0)]);
+$stmt->execute(array(':id' => _get('id', 0)));
 if ($stmt->rowCount() == 0) {
     render('404');
     return;
@@ -35,13 +35,13 @@ if (isPostRequest()) {
                 $G['errors']['file' . $i] = '添付ファイル ' . $i . 'の内容をご確認下さい';
             }
             if (empty($G['errors']['file' . $i])) {
-                $data['file' . $i] = ['name' => $f['name'], 'tmp_name' => $f['tmp_name']];
+                $data['file' . $i] = array('name' => $f['name'], 'tmp_name' => $f['tmp_name']);
             }
         } else {
             if (_post('delete_file' . $i) == '1') {
                 unset($data['file' . $i]);
             } elseif (!empty($data['file' . $i]) && !empty($data['up_file' . $i])) {
-                $data['file' . $i] = ['name' => $data['file' . $i], 'path' => $data['up_file' . $i]];
+                $data['file' . $i] = array('name' => $data['file' . $i], 'path' => $data['up_file' . $i]);
             }
         }
     }

@@ -7,7 +7,7 @@
  */
 
 $stmt = getDB()->prepare('SELECT * FROM "post" WHERE "id"=:id');
-$stmt->execute([':id' => _get('id', 0)]);
+$stmt->execute(array(':id' => _get('id', 0)));
 if ($stmt->rowCount() == 0) {
     render('404');
     return;

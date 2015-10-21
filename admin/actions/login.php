@@ -22,4 +22,4 @@ if (isPostRequest()) {
     }
 }
 
-render('login', ['header' => false, 'footer' => false]);
+render('login', array('header' => false, 'footer' => false));

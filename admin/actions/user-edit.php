@@ -23,10 +23,10 @@ if (isPostRequest()) {
             $user = $G['user'];
             $password = empty($password) ? $user['password'] : hashPassword($password);
             $stmt = getDB()->prepare('UPDATE "user" SET "email"=:email, "password"=:password WHERE "id"=:id');
-            $stmt->execute([':email' => $email, ':password' => $password, ':id' => $user['id']]);
+            $stmt->execute(array(':email' => $email, ':password' => $password, ':id' => $user['id']));
             render('user-edit-thanks');
         } else {
-            $G['data'] = ['email' => $email, 'password' => $password];
+            $G['data'] = array('email' => $email, 'password' => $password);
             render('user-edit-check');
             return;
         }
