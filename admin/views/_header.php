@@ -62,7 +62,7 @@ global $G;
                 <li class="<?php echo in_array($G['action']['post']) ? 'active' : '' ?>">
                     <a href="index.php?a=post"><i class="fa fa-edit"></i> <span>投稿</span> <i class="fa fa-angle-right pull-right"></i></a>
                 </li>
-                <li class="<?php echo in_array($G['action'],['user']) ? 'active' : '' ?>">
+                <li class="<?php echo in_array($G['action']['user']) ? 'active' : '' ?>">
                     <a href="index.php?a=user"><i class="fa fa-user"></i> <span>ユーザー</span> <i class="fa fa-angle-right pull-right"></i></a>
                 </li>
                 <li>
