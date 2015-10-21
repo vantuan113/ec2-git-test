@@ -31,7 +31,7 @@ if (isPostRequest()) {
             if ($f['size'] > 5 * 1024 * 1024) { // 5M
                 $G['errors']['file' . $i] = '添付ファイル ' . $i . 'の内容をご確認下さい';
             }
-            if (!in_array(pathinfo($f['name'], PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif', 'pdf'])) {
+            if (!in_array(pathinfo($f['name'], PATHINFO_EXTENSION), array('jpg', 'jpeg', 'png', 'gif', 'pdf'))) {
                 $G['errors']['file' . $i] = '添付ファイル ' . $i . 'の内容をご確認下さい';
             }
             if (empty($G['errors']['file' . $i])) {
