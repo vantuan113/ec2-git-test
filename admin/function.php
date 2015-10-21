@@ -21,7 +21,7 @@ function isLoggedIn()
     global $G;
     if (isset($_SESSION['uid']) && $_SESSION['uid'] > 0) {
         $stmt = getDB()->prepare('SELECT * FROM "user" WHERE "id"=:id LIMIT 1');
-        $stmt->execute([':id' => $_SESSION['uid']]);
+        $stmt->execute(array(':id' => $_SESSION['uid']));
         if ($stmt->rowCount() > 0) {
             $G['user'] = $stmt->fetch(PDO::FETCH_ASSOC);
             return true;
@@ -68,7 +68,7 @@ function getDB()
 
 function render($view, $options = array())
 {
-    $defaultOptions = ['header' => true, 'footer' => true];
+    $defaultOptions = array('header' => true, 'footer' => true);
     $options = array_merge($defaultOptions, $options);
 
     if ($options['header']) include 'views/_header.php';
@@ -86,7 +86,7 @@ function render($view, $options = array())
 function findUser($email)
 {
     $stmt = getDB()->prepare('SELECT * FROM "user" WHERE "email"=:email');
-    $stmt->execute([':email' => $email]);
+    $stmt->execute(array(':email' => $email));
     return $stmt->rowCount() > 0 ? $stmt->fetch(PDO::FETCH_ASSOC) : array();
 }
 
@@ -121,11 +121,11 @@ function human_filesize($file, $decimals = 2)
 
 function postStatus($status = null)
 {
-    $a = [
+    $a = array(
         1 => '公開',
         2 => '非公開',
         3 => '削除',
-    ];
+    );
     return $status === null ? $a : (isset($a[$status]) ? $a[$status] : 'Unknown');
 }
 
