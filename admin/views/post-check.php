@@ -61,7 +61,7 @@ $data = $G['data'];
                                                 <?php echo human_filesize(UPLOAD_PATH . '/tmp/' . $f['path']) ?>
                                             </span>
                                         </div>
-                                    <?php elseif (in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])): ?>
+                                    <?php elseif (in_array($ext, array('jpg', 'jpeg', 'png', 'gif'))): ?>
                                         <span class="mailbox-attachment-icon has-img">
                                             <img src="../uploads/tmp/<?php echo $f['path'] ?>" alt="Attachment">
                                         </span>
