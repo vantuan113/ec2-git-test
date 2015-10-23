@@ -42,9 +42,10 @@ if (isPostRequest()) {
 
     // public date
     //$data['created_date'] = _post('start_year') . '-' . _post('start_month') . '-' . _post('start_day') . ' ' . _post('start_hour') . ':' . _post('start_min') . ':00';
-    $s = _post('start_year') . '-' . _post('start_month') . '-' . _post('start_day') . ' ' . _post('start_hour') . ':' . _post('start_min') . ':00';
-    $date = DateTime::createFromFormat('Y-n-j G:i:s', $s);
-    $data['created_date'] = $date->getTimestamp();
+    $s = intval(_post('start_year')) . '-' . intval(_post('start_month')) . '-' . intval(_post('start_day')) . ' ' . intval(_post('start_hour')) . ':' . intval(_post('start_min')) . ':00';
+    //$date = DateTime::createFromFormat('Y-n-j G:i:s', $s);
+    //$data['created_date'] = $date->getTimestamp();
+    $data['created_date'] = strtotime($s);
 
     if (empty($G['errors'])) {
         // move file upload for check
