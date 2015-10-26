@@ -142,7 +142,7 @@ $data = $G['data'];
                                 <select name="start_year" class="w120">
                                     <option value="">選択</option>
                                     <?php $y = (int)date('Y') ?>
-                                    <?php for ($i = 0; $i < 4; $i++): ?>
+                                    <?php for ($i = -1; $i <= 1; $i++): ?>
                                         <option value="<?php echo $y ?>" <?php echo $y == $date['Y'] ? 'selected' : '' ?>><?php echo $y ?></option>
                                         <?php $y++; endfor ?>
                                 </select>
