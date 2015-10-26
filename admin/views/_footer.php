@@ -20,7 +20,8 @@
 <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="dist/js/app.min.js"></script>
-<script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+<!--<script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>-->
+<script src="plugins/ckeditor/ckeditor.js"></script>
 <script>
     $(function () {
         CKEDITOR.replace('editor1');

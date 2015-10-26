@@ -45,11 +45,6 @@ $errors = $G['errors'];
                     <!-- ユーザーID -->
                     <div class="form-group">
                         <label>ユーザーID</label>
-                        <!--                    <input type="text" class="form-control" value="ユーザー名">-->
-                        <p class="form-control-static"><?php echo getUserId() ?></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
                         <input name="email" type="text" class="form-control" value="<?php echo $user['email'] ?>"
                                placeholder="Email">
                     </div>
