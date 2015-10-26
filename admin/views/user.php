@@ -5,6 +5,8 @@
  * Date: 10/14/2015
  * Time: 17:49
  */
+ global $G;
+ $user = $G['user'];
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -30,7 +32,7 @@
                         <th>ユーザーID</th>
                     </tr>
                     <tr>
-                        <td><a href="index.php?a=user-edit&id=<?php echo getUserId() ?>">ユーザー名がここに入る</a></td>
+                        <td><a href="index.php?a=user-edit&id=<?php echo getUserId() ?>"><?php echo htmlspecialchars($user['email']) ?></a></td>
                     </tr>
                     </tbody>
                 </table>
