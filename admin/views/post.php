@@ -38,7 +38,7 @@ $data = $G['data'];
                 <?php endif ?>
                 <!-- アラート表示 -->
 
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data" class="form-validate">
                     <!-- タイトル -->
                     <div class="form-group">
                         <label>タイトル</label>
@@ -84,7 +84,7 @@ $data = $G['data'];
 
                         <div class="input-group">
                             <div class="input-time">
-                                <select name="start_year" class="w120">
+                                <select name="start_year" class="w120" required>
                                     <option value="">選択</option>
                                     <?php $y = (int)date('Y') ?>
                                     <?php for ($i = -1; $i <= 1; $i++): ?>
@@ -92,7 +92,7 @@ $data = $G['data'];
                                         <?php $y++; endfor ?>
                                 </select>
                                 年
-                                <select name="start_month" class="w120">
+                                <select name="start_month" class="w120" required>
                                     <option value="">選択</option>
                                     <?php for ($i = 1; $i <= 12; $i++): ?>
                                         <option
@@ -100,7 +100,7 @@ $data = $G['data'];
                                     <?php endfor ?>
                                 </select>
                                 月
-                                <select name="start_day" class="w120">
+                                <select name="start_day" class="w120" required>
                                     <option value="">選択</option>
                                     <?php for ($i = 1; $i <= 31; $i++): ?>
                                         <option
@@ -108,7 +108,7 @@ $data = $G['data'];
                                     <?php endfor ?>
                                 </select>
                                 日
-                                <select name="start_hour" class="w120">
+                                <select name="start_hour" class="w120" required>
                                     <option value="">選択</option>
                                     <?php for ($i = 0; $i <= 23; $i++): ?>
                                         <option
@@ -116,7 +116,7 @@ $data = $G['data'];
                                     <?php endfor ?>
                                 </select>
                                 時
-                                <select name="start_min" class="w120">
+                                <select name="start_min" class="w120" required>
                                     <option value="">選択</option>
                                     <?php for ($i = 0; $i <= 50; $i += 10): ?>
                                         <option

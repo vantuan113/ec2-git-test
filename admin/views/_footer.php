@@ -22,9 +22,12 @@
 <script src="dist/js/app.min.js"></script>
 <!--<script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>-->
 <script src="plugins/ckeditor/ckeditor.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/localization/messages_ja.js"></script>
 <script>
     $(function () {
         CKEDITOR.replace('editor1');
+        $(".form-validate").validate();
     });
 </script>
 </body>
