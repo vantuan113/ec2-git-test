@@ -8,6 +8,6 @@
 
 // config MySQL
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'cmtestdb');
-define('DB_USER', 'cmtestuser');
-define('DB_PASSWORD', 'arakawa4071');
+define('DB_NAME', 'marutokunewsdb');
+define('DB_USER', 'master');
+define('DB_PASSWORD', 'master');
